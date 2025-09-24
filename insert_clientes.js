@@ -1,7 +1,7 @@
 import { fakerES as faker } from "@faker-js/faker";
 import connection from "./db/connection.js"; 
 
-const TOTAL = 100_000;
+const TOTAL = 2_000_000;
 const BATCH_SIZE = 10_000;
 
 async function insertClientes() {
