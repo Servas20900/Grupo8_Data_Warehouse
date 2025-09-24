@@ -1,5 +1,5 @@
 import { fakerES as faker } from "@faker-js/faker";
-import connection from "./db/connection.js"; 
+import connection from "../db/connection.js"; 
 
 const TOTAL = 2_000_000;
 const BATCH_SIZE = 10_000;
@@ -37,3 +37,6 @@ insertClientes().catch((err) => {
   console.error(" Error:", err);
   process.exit(1);
 });
+
+
+export default insertClientes;
