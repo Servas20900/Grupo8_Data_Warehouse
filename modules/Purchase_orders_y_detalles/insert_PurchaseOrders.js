@@ -1,10 +1,10 @@
 import { fakerES as faker } from "@faker-js/faker";
-import connection from "./db/connection.js";
+import connection from "../../db/connection.js";
 
-const TOTAL = 2000;           // número de órdenes de compra
-const BATCH_SIZE = 200;       // tamaño de cada batch
-const MAX_VENDOR_ID = 500;    // según vendors insertados
-const MAX_EMPLEADO_ID = 1000; // según empleados insertados
+const TOTAL = 2000;           
+const BATCH_SIZE = 200;       
+const MAX_VENDOR_ID = 500;    
+const MAX_EMPLEADO_ID = 1000; 
 
 async function insertPurchaseOrders() {
   for (let i = 0; i < TOTAL; i += BATCH_SIZE) {
@@ -25,7 +25,6 @@ async function insertPurchaseOrders() {
     console.log(`Insertadas ${i + values.length} órdenes de compra`);
   }
 
-  await connection.end();
   console.log("Inserción de purchase orders finalizada");
 }
 

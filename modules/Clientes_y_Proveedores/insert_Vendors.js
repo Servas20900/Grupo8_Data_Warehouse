@@ -1,8 +1,8 @@
 import { fakerES as faker } from "@faker-js/faker";
-import connection from "./db/connection.js";
+import connection from "../../db/connection.js";
 
 const TOTAL = 500;
-const MAX_DISTRITO_ID = 200; // según distritos insertados
+const MAX_DISTRITO_ID = 200; 
 const BATCH_SIZE = 100;
 
 async function insertVendors() {
@@ -24,7 +24,6 @@ async function insertVendors() {
     console.log(`Insertados ${i + values.length} vendors`);
   }
 
-  await connection.end();
   console.log("Inserción de vendors finalizada");
 }
 

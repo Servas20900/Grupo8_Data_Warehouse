@@ -14,7 +14,6 @@ async function insertPuestos() {
   );
 
   console.log('Insertados puestos');
-  await connection.end();
 }
 
 insertPuestos().catch(err => console.error(err));

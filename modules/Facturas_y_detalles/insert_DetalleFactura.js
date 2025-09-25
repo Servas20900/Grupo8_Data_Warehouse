@@ -1,5 +1,5 @@
 import { fakerES as faker } from "@faker-js/faker";
-import connection from "./db/connection.js";
+import connection from "../../db/connection.js";
 
 const TOTAL = 5000;
 const BATCH_SIZE = 500;
@@ -25,7 +25,6 @@ async function insertDetalleFactura() {
     console.log(`Insertados ${i + values.length} detalles de factura`);
   }
 
-  await connection.end();
   console.log("Inserción de detalles de factura finalizada");
 }
 

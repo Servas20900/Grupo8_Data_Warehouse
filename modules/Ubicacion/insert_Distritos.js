@@ -1,8 +1,8 @@
 import { fakerES as faker } from "@faker-js/faker";
-import connection from "../db/connection.js";
+import connection from "../../db/connection.js";
 
-const TOTAL = 200; // distritos
-const MAX_CANTON_ID = 50; // según cantones insertados
+const TOTAL = 2_000_500; 
+const MAX_CANTON_ID = 2_000_500; 
 
 async function insertDistritos() {
   const values = [];
@@ -17,7 +17,6 @@ async function insertDistritos() {
   );
 
   console.log(`Insertados ${TOTAL} distritos`);
-  await connection.end();
 }
 
 insertDistritos().catch(err => console.error(err));

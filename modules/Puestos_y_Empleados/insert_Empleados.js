@@ -23,7 +23,6 @@ async function insertEmpleados() {
   );
 
   console.log(`Insertados ${TOTAL} empleados`);
-  await connection.end();
 }
 
 insertEmpleados().catch(err => console.error(err));

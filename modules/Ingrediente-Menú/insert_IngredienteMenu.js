@@ -1,5 +1,5 @@
 import { fakerES as faker } from "@faker-js/faker";
-import connection from "./db/connection.js";
+import connection from "../../db/connection.js";
 
 const TOTAL = 5000;
 const BATCH_SIZE = 500;
@@ -24,7 +24,6 @@ async function insertIngredienteMenu() {
     console.log(`Insertadas ${i + values.length} relaciones platillo-ingrediente`);
   }
 
-  await connection.end();
   console.log("Inserción de ingrediente-menu finalizada");
 }
 

@@ -1,9 +1,9 @@
 import { fakerES as faker } from "@faker-js/faker";
-import connection from "./db/connection.js";
+import connection from "../../db/connection.js";
 
 const TOTAL = 2000;
 const BATCH_SIZE = 200;
-const MAX_CLIENTE_ID = 2000; // ajusta según clientes
+const MAX_CLIENTE_ID = 2000; 
 const MAX_EMPLEADO_ID = 1000;
 
 async function insertFacturas() {
@@ -25,7 +25,6 @@ async function insertFacturas() {
     console.log(`Insertadas ${i + values.length} facturas`);
   }
 
-  await connection.end();
   console.log("Inserción de facturas finalizada");
 }
 
