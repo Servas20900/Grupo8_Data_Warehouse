@@ -1,12 +1,18 @@
 import { fakerES as faker } from "@faker-js/faker";
 import connection from "../../db/connection.js";
 
-const TOTAL = 500; 
+const TOTAL = 2000; 
 const MAX_PUESTO_ID = 4;
 
 async function insertEmpleados() {
-  const values = [];
-  for (let i = 0; i < TOTAL; i++) {
+  console.log(`Insertando ${TOTAL} empleados en batches...`);
+  const BATCH_SIZE = 1000;
+  
+  for (let i = 0; i < TOTAL; i += BATCH_SIZE) {
+    const values = [];
+    const currentBatchSize = Math.min(BATCH_SIZE, TOTAL - i);
+    
+    for (let j = 0; j < currentBatchSize; j++) {
     const nombre = faker.person.firstName();
     const apellido1 = faker.person.lastName();
     const apellido2 = faker.person.lastName();
@@ -22,7 +28,12 @@ async function insertEmpleados() {
     [values]
   );
 
-  console.log(`Insertados ${TOTAL} empleados`);
+    const completed = i + currentBatchSize;
+    const percentage = ((completed / TOTAL) * 100).toFixed(2);
+    console.log(`Insertados ${completed} empleados (${percentage}%)`);
+  }
+
+  console.log("Insertados empleados");
 }
 
 export default insertEmpleados;

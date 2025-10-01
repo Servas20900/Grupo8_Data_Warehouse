@@ -22,7 +22,7 @@ async function insertIngredienteMenu() {
 
       combinaciones.add(key);
 
-      const cantidadUtilizada = faker.number.int({ min: 1, max: 5 }); // Cantidad de ingrediente por platillo
+      const cantidadUtilizada = faker.number.int({ min: 1, max: 5 }); 
       values.push([platilloId, ingredienteId, cantidadUtilizada]);
     }
 

@@ -16,9 +16,9 @@ import connection from './db/connection.js';
 
 async function main() {
   try {
-    console.log("Iniciando inserción de datos para Restaurante_Grupo8 ... ");
+    console.log("Iniciando inserción de datos MASIVOS para Restaurante_Grupo8 ... ");
+    console.log("ATENCIÓN: Este proceso insertará millones de registros y puede tomar varios minutos/horas");
     
-    // Insertar datos base de ubicación (primero porque otros dependen de estos)
     console.log("=== Insertando datos de ubicación ===");
     await insertProvincias();
     await insertCantones();
@@ -26,30 +26,30 @@ async function main() {
     
     console.log("=== Insertando puestos de trabajo ===");
     await insertPuestos();
-    
-    console.log("=== Insertando empleados ===");
+
+    console.log("=== Insertando empleados  ===");
     await insertEmpleados();
     
     console.log("=== Insertando clientes y proveedores ===");
     await insertClientes();
-    await insertVendors();
+    await insertVendors(); 
     
     console.log("=== Insertando menú e ingredientes ===");
     await insertMenu();
-    await insertIngredientes();
+    await insertIngredientes(); 
     
     console.log("=== Relacionando ingredientes con menú ===");
     await insertIngredienteMenu();
     
-    console.log("=== Insertando órdenes de compra ===");
+    console.log("=== Insertando órdenes de compra (2M registros) ===");
     await insertPurchaseOrders();
-    await insertDetallePO();
+    await insertDetallePO(); 
     
     console.log("=== Insertando facturas ===");
     await insertFacturas();
     await insertDetalleFactura();
 
-    console.log("Inserción completa finalizada ");
+    console.log(" Inserción completa finalizada - Millones de registros insertados exitosamente");
   } catch (err) {
     console.error("Error:", err);
   } finally {

@@ -1,17 +1,20 @@
 import { fakerES as faker } from "@faker-js/faker";
 import connection from "../../db/connection.js";
 
-const TOTAL = 500;                
-const BATCH_SIZE = 500;           
-const MAX_PO_ID = 500;           
-const MAX_INGREDIENTE_ID = 500;    
+const TOTAL = 2000000;                
+const BATCH_SIZE = 1000;           
+const MAX_PO_ID = 2000000;         
+const MAX_INGREDIENTE_ID = 2000;  
 
 async function insertDetallePO() {
+  console.log(`Iniciando inserción de ${TOTAL} detalles de purchase order en batches de ${BATCH_SIZE}...`);
+  
   for (let i = 0; i < TOTAL; i += BATCH_SIZE) {
     const values = [];
     const combinaciones = new Set(); 
+    const currentBatchSize = Math.min(BATCH_SIZE, TOTAL - i);
 
-    for (let j = 0; j < BATCH_SIZE && i + j < TOTAL; j++) {
+    for (let j = 0; j < currentBatchSize; j++) {
       let poId, ingredienteId, key;
 
       do {
@@ -32,7 +35,9 @@ async function insertDetallePO() {
       [values]
     );
 
-    console.log(`Insertados ${i + values.length} detalles de purchase order`);
+    const completed = i + currentBatchSize;
+    const percentage = ((completed / TOTAL) * 100).toFixed(2);
+    console.log(`Insertados ${completed} detalles de purchase order (${percentage}%)`);
   }
 
   console.log("Inserción de detalle purchase orders finalizada");
