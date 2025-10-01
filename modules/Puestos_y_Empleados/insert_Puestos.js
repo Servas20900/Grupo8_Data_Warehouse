@@ -16,6 +16,4 @@ async function insertPuestos() {
   console.log('Insertados puestos');
 }
 
-insertPuestos().catch(err => console.error(err));
-
 export default insertPuestos;

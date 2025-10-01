@@ -2,8 +2,8 @@ import { fakerES as faker } from "@faker-js/faker";
 import connection from "../../db/connection.js";
 
 const TOTAL = 500;
-const MAX_DISTRITO_ID = 200; 
-const BATCH_SIZE = 100;
+const MAX_DISTRITO_ID = 500; 
+const BATCH_SIZE = 500;
 
 async function insertVendors() {
   for (let i = 0; i < TOTAL; i += BATCH_SIZE) {
@@ -26,7 +26,5 @@ async function insertVendors() {
 
   console.log("Inserción de vendors finalizada");
 }
-
-insertVendors().catch(err => console.error(err));
 
 export default insertVendors;

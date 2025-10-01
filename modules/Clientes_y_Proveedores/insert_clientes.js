@@ -1,8 +1,8 @@
 import { fakerES as faker } from "@faker-js/faker";
 import connection from "../../db/connection.js"; 
 
-const TOTAL = 2_000_000;
-const BATCH_SIZE = 10_000;
+const TOTAL = 500;
+const BATCH_SIZE = 500;
 
 async function insertClientes() {
   console.log(` Insertando ${TOTAL} clientes en tantos de ${BATCH_SIZE}...`);
@@ -26,16 +26,10 @@ async function insertClientes() {
       [values]
     );
 
-    console.log(` Insertados ${i + BATCH_SIZE} registros`);
+    console.log(` Clientes insertados ${i + BATCH_SIZE} registros`);
   }
 
   console.log(" Inserción finalizada");
 }
-
-insertClientes().catch((err) => {
-  console.error(" Error:", err);
-  process.exit(1);
-});
-
 
 export default insertClientes;

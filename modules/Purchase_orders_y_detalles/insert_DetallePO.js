@@ -1,16 +1,27 @@
 import { fakerES as faker } from "@faker-js/faker";
 import connection from "../../db/connection.js";
 
-const TOTAL = 5000;                
+const TOTAL = 500;                
 const BATCH_SIZE = 500;           
-const MAX_PO_ID = 2000;           
+const MAX_PO_ID = 500;           
 const MAX_INGREDIENTE_ID = 500;    
+
 async function insertDetallePO() {
   for (let i = 0; i < TOTAL; i += BATCH_SIZE) {
     const values = [];
+    const combinaciones = new Set(); 
+
     for (let j = 0; j < BATCH_SIZE && i + j < TOTAL; j++) {
-      const poId = faker.number.int({ min: 1, max: MAX_PO_ID });
-      const ingredienteId = faker.number.int({ min: 1, max: MAX_INGREDIENTE_ID });
+      let poId, ingredienteId, key;
+
+      do {
+        poId = faker.number.int({ min: 1, max: MAX_PO_ID });
+        ingredienteId = faker.number.int({ min: 1, max: MAX_INGREDIENTE_ID });
+        key = `${poId}-${ingredienteId}`;
+      } while (combinaciones.has(key));
+
+      combinaciones.add(key);
+
       const precio = faker.number.int({ min: 100, max: 2000 });
       const cantidad = faker.number.int({ min: 1, max: 20 });
       values.push([poId, ingredienteId, precio, cantidad]);
@@ -27,5 +38,4 @@ async function insertDetallePO() {
   console.log("Inserción de detalle purchase orders finalizada");
 }
 
-insertDetallePO().catch(err => console.error(err));
 export default insertDetallePO;

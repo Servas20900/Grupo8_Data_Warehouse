@@ -2,7 +2,7 @@ import { fakerES as faker } from "@faker-js/faker";
 import connection from "../../db/connection.js";
 
 const TOTAL = 500;
-const BATCH_SIZE = 100;
+const BATCH_SIZE = 500;
 
 async function insertIngredientes() {
   for (let i = 0; i < TOTAL; i += BATCH_SIZE) {
@@ -24,5 +24,4 @@ async function insertIngredientes() {
   console.log("Inserción de ingredientes finalizada");
 }
 
-insertIngredientes().catch(err => console.error(err));
 export default insertIngredientes;

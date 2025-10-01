@@ -1,7 +1,7 @@
 import { fakerES as faker } from "@faker-js/faker";
 import connection from "../../db/connection.js";
 
-const TOTAL = 1000; 
+const TOTAL = 500; 
 const MAX_PUESTO_ID = 4;
 
 async function insertEmpleados() {
@@ -24,7 +24,5 @@ async function insertEmpleados() {
 
   console.log(`Insertados ${TOTAL} empleados`);
 }
-
-insertEmpleados().catch(err => console.error(err));
 
 export default insertEmpleados;

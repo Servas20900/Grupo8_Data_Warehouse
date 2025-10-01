@@ -17,34 +17,37 @@ import connection from './db/connection.js';
 async function main() {
   try {
     console.log("Iniciando inserción de datos para Restaurante_Grupo8 ... ");
-
-    // 1. Ubicación
+    
+    // Insertar datos base de ubicación (primero porque otros dependen de estos)
+    console.log("=== Insertando datos de ubicación ===");
     await insertProvincias();
     await insertCantones();
     await insertDistritos();
-
-    // 2. Puestos y Empleados
+    
+    console.log("=== Insertando puestos de trabajo ===");
     await insertPuestos();
+    
+    console.log("=== Insertando empleados ===");
     await insertEmpleados();
-
-    // 3. Clientes y Proveedores
+    
+    console.log("=== Insertando clientes y proveedores ===");
     await insertClientes();
     await insertVendors();
-
-    // 4. Menú e Ingredientes
+    
+    console.log("=== Insertando menú e ingredientes ===");
     await insertMenu();
     await insertIngredientes();
-
-    // 5. Facturas y detalles
-    await insertFacturas();
-    await insertDetalleFactura();
-
-    // 6. Purchase orders y detalles
+    
+    console.log("=== Relacionando ingredientes con menú ===");
+    await insertIngredienteMenu();
+    
+    console.log("=== Insertando órdenes de compra ===");
     await insertPurchaseOrders();
     await insertDetallePO();
-
-    // 7. Ingrediente - Menú
-    await insertIngredienteMenu();
+    
+    console.log("=== Insertando facturas ===");
+    await insertFacturas();
+    await insertDetalleFactura();
 
     console.log("Inserción completa finalizada ");
   } catch (err) {

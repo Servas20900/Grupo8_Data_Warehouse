@@ -1,7 +1,7 @@
 import { fakerES as faker } from "@faker-js/faker";
 import connection from "../../db/connection.js";
 
-const TOTAL = 2_000_500; 
+const TOTAL = 500; 
 
 async function insertProvincias() {
   const values = [];
@@ -16,7 +16,5 @@ async function insertProvincias() {
 
   console.log(`Insertadas ${TOTAL} provincias`);
 }
-
-insertProvincias().catch(err => console.error(err));
 
 export default insertProvincias;

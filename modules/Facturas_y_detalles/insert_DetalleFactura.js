@@ -1,10 +1,10 @@
 import { fakerES as faker } from "@faker-js/faker";
 import connection from "../../db/connection.js";
 
-const TOTAL = 5000;
+const TOTAL = 500;
 const BATCH_SIZE = 500;
-const MAX_FACTURA_ID = 2000;
-const MAX_PLATILLO_ID = 1000;
+const MAX_FACTURA_ID = 500;
+const MAX_PLATILLO_ID = 500;
 
 async function insertDetalleFactura() {
   for (let i = 0; i < TOTAL; i += BATCH_SIZE) {
@@ -27,7 +27,5 @@ async function insertDetalleFactura() {
 
   console.log("Inserción de detalles de factura finalizada");
 }
-
-insertDetalleFactura().catch(err => console.error(err));
 
 export default insertDetalleFactura;
